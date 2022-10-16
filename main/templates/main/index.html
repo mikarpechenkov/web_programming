@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{% static 'MAIN/CSS/MAIN.css' %}">
+    <style>
+        span{
+            color:red;
+            font-size: large;
+            font-family: "Times New Roman", serif;
+        }
+    </style>
+</head>
+<body>
+<h1>Фирменные товары и услуги</h1>
+    <a class="animatePulse" href="{% url 'contacts' %}"><strong>Контакты</strong></a>
+    <a class="animatePulse" href="{% url 'about' %}"><strong>О нас</strong></a>
+    <div class="mainContent">
+        <h2>Это больше, чем просто магазин</h2>
+        <h3>Все, что вы найдете на нашем сайте, уникально</h3>
+<h4>На данной странице вы найдете:</h4>
+      <div class="navbar">
+<nav>
+<ul>
+    <li><a href="#stock" >Ассортимент предоставляемых услуг и реализуемых товаров </a></li>
+    <li><a href="#examples">Увидете интерьерные работы наших дизайнеров</a></li>
+    <li><a href="#inspiration">Сможете узнать, чем мы вдохновляемся</a></li>
+</ul>
+</nav>
+          </div>
+    </div>
+
+<div  id="stock">
+<h4>Наши товары и услуги</h4>
+<p><span class="firstLit">М</span>ы преображаем вашу квартиру или ваш дом, создаем в них единый стиль.
+    <br/>Делаем вашу жизнь более приятной
+    <br/>Мы создаем ее стиль вместе с вами
+    <br/>Кроме того все необходимые элементы интерьера мы производим своими силами:
+</p>
+    <ol>
+    <li>Столы</li>
+    <li>Шкафы</li>
+    <li>Кровати</li>
+    <li>Пепельницы</li>
+   </ol>
+</div>
+
+<div id="examples">
+    <br><h4>Примеры уже созданных дизайнов</h4>
+    <img src="{% static 'main/img/theFirst.jpg' %}" alt="interior" width="300" height="200">
+    <img src="{% static 'main/img/theSecond.png' %}" alt="ashtray" width="208" height="200">
+    <img src="{% static 'main/img/theThird.jpg' %}" alt="table" height="200" width="224">
+</div>
+
+<div id="inspiration">
+    <br><h4>Кем мы вдохновлемся</h4>
+    <video src="{% static 'main/video/inspirationVideo.mp4' %}" height="315" width="560" controls>
+        К сожалению видео не доступно, но вдохновение остается в наших сердцах
+    </video>
+    <p>Алексей и Павел</p>
+</div>
+
+</body>
+</html>
