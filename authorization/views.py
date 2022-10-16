@@ -1,4 +1,6 @@
 import requests
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -31,3 +33,9 @@ def get_registration_data(request):
     else:
         form = RegistrationForm()
     return render(request, 'authorization/registration.html', {'form': form})
+
+
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'authorization/login.html'
+
