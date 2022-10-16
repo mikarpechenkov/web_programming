@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин</title>
+
+    <!--Favicons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+
+    <!-- Bootstrap CSS (jsDelivr CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="{% static 'stock/css/stock.css' %}" rel="stylesheet">
+    <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <!-- Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+   <script type="text/javascript" src="{% static "stock/js/stock_script.js" %}"></script>
+</head>
+<body onload="express_will()">
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'main' %}">MP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{% url 'main' %}" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Главная
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'main' %}#stock">Ассортимент</a></li>
+                        <li><a class="dropdown-item" href="{% url 'main' %}#examples">Примеры</a></li>
+                        <li><a class="dropdown-item" href="{% url 'main' %}#inspiration">Источник вдохновения</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'stock' %}">Магазин</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'contacts' %}">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'about' %}">О нас</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <a href="#" role="button"><img src="{% static 'stock/img/cart.svg' %}"></a>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Войти/зарегистрироваться</a>
+        </div>
+    </div>
+</nav>
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                {% if goods %}
+                    {% for el in goods %}
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ el.appearance.url }}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ el.title }}</h5>
+                                <div class="good-details">
+                                    <p class="card-text">{{ el.details }}</p>
+                                </div>
+                                <h6 class="price">{{ el.price }}</h6>
+                                <button type="button" class="btn btn-primary" name="wish">В корзину</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Пока что товаров нет</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
