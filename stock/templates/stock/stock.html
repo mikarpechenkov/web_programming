@@ -21,7 +21,7 @@
     <!-- Ajax-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-   <script type="text/javascript" src="{% static "stock/js/stock_script.js" %}"></script>
+    <script type="text/javascript" src="{% static "stock/js/stock_script.js" %}"></script>
 </head>
 <body onload="express_will()">
 <nav class="navbar navbar-expand-lg bg-light">
@@ -55,18 +55,23 @@
                 </li>
             </ul>
         </div>
-        <div class="d-flex">
-            <a href="#" role="button"><img src="{% static 'stock/img/cart.svg' %}"></a>
-            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Войти/зарегистрироваться</a>
+        <div class="d-flex flex-row-reverse">
+            <div class="mx-2"><a class="btn btn-primary" href="{% url 'login' %}"
+                                 role="button">Войти/зарегистрироваться</a></div>
+            <div class="mx-2">
+                <div class="d-flex align-items-center">
+                    <a href="#" role="button"><img src="{% static 'stock/img/cart.svg' %}" width="20"
+                                                   height="20"></a></div>
+            </div>
         </div>
     </div>
 </nav>
 <div class="main-content">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-sm-6">
-                {% if goods %}
-                    {% for el in goods %}
+            {% if goods %}
+                {% for el in goods %}
+                    <div class="col-lg-3 col-sm-6">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ el.appearance.url }}" class="card-img-top">
                             <div class="card-body">
@@ -78,11 +83,11 @@
                                 <button type="button" class="btn btn-primary" name="wish">В корзину</button>
                             </div>
                         </div>
-                    {% endfor %}
-                {% else %}
-                    <p>Пока что товаров нет</p>
-                {% endif %}
-            </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Пока что товаров нет</p>
+            {% endif %}
         </div>
     </div>
 </div>

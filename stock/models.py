@@ -7,7 +7,7 @@ class Goods(models.Model):
     details = models.TextField('Описание товара')
     price = models.DecimalField('Цена товара', max_digits=10, decimal_places=2)
 
-    def __str(self):
+    def __str__(self):
         return self.title
 
     class Meta:
