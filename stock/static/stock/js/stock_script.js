@@ -2,7 +2,8 @@ function express_will(){
     let buttons=document.getElementsByName("wish");
 
     buttons.forEach(function(el){
-        el.addEventListener('click',function(){
+        el.addEventListener('click',function(event){
+            event.preventDefault();
             if (el.classList.contains('btn-primary')){
                 el.innerHTML="Удалить";
                 el.classList.remove('btn-primary');

@@ -9,6 +9,7 @@ from .forms import RegistrationForm
 
 
 def login_page(request):
+
     return render(request, 'authorization/login.html')
 
 
